@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken';
 import config from '../../shared/config/index.js';
 
 export const loginUser = async ({ username, password }) => {
-  const existing = await db('users').where({ username }).first();
+  const existing = await db('users').where({ username, is_deleted: false }).first();
 
   if (!existing) {
     throw new NotFoundError('Foydalanuvchi topilmadi.');

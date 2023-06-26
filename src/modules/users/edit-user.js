@@ -3,7 +3,7 @@ import { NotFoundError } from '../../shared/errors/index.js';
 import bcrypt from 'bcryptjs';
 
 export const editUser = async ({ id, ...changes }) => {
-  const existing = await db('users').where({ id }).first();
+  const existing = await db('users').where({ id, is_deleted: false }).first();
 
   if (!existing) {
     throw new NotFoundError('Foydanuvchi topilmadi.');
