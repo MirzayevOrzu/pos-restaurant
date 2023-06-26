@@ -19,6 +19,7 @@ export const showItem = async ({ id }) => {
       ) as options
     `)
     )
+    .groupBy('items.id')
     .first();
 
   if (!category) {
