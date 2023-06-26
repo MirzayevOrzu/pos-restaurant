@@ -53,3 +53,9 @@ export const postAddOptionSchema = {
     price: Joi.number().positive(),
   }),
 };
+
+export const deleteOptionSchema = {
+  params: Joi.object({
+    id: Joi.number().integer().required(),
+  }),
+};

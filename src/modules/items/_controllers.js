@@ -6,6 +6,7 @@ import {
   patchItemSchema,
   postAddOptionSchema,
   postItemSchema,
+  deleteOptionSchema,
 } from './_schemas.js';
 import { addItem } from './add-item.js';
 import { listItems } from './list-items.js';
@@ -13,6 +14,7 @@ import { showItem } from './show-item.js';
 import { editItem } from './edit-item.js';
 import { removeItem } from './remove-item.js';
 import { addOption } from './add-option.js';
+import { removeOption } from './remove-option.js';
 
 /**
  * @param {express.Request} req
@@ -107,6 +109,23 @@ export const postAddOption = async (req, res, next) => {
     httpValidator({ body: req.body }, postAddOptionSchema)();
 
     const result = await addOption(req.body);
+
+    res.status(200).json(result);
+  } catch (error) {
+    next(error);
+  }
+};
+
+/**
+ * @param {express.Request} req
+ * @param {express.Response} res
+ * @param {express.NextFunction} next
+ */
+export const deleteOption = async (req, res, next) => {
+  try {
+    httpValidator({ params: req.params }, deleteOptionSchema)();
+
+    const result = await removeOption(req.params);
 
     res.status(200).json(result);
   } catch (error) {

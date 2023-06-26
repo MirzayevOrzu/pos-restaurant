@@ -6,6 +6,7 @@ import {
   patchItem,
   deleteItem,
   postAddOption,
+  deleteOption,
 } from './_controllers.js';
 
 const router = express.Router();
@@ -16,5 +17,6 @@ router.get('/items/:id', getItem);
 router.patch('/items/:id', patchItem);
 router.delete('/items/:id', deleteItem);
 router.post('/items/add-option', postAddOption);
+router.delete('/items/option/:id', deleteOption);
 
 export default router;
