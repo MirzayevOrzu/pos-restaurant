@@ -5,7 +5,7 @@ import {
   getItem,
   patchItem,
   deleteItem,
-  postAddOption,
+  postOption,
   deleteOption,
 } from './_controllers.js';
 
@@ -16,7 +16,7 @@ router.get('/items', getItems);
 router.get('/items/:id', getItem);
 router.patch('/items/:id', patchItem);
 router.delete('/items/:id', deleteItem);
-router.post('/items/add-option', postAddOption);
+router.post('/items/option', postOption);
 router.delete('/items/option/:id', deleteOption);
 
 export default router;

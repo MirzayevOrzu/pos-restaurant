@@ -45,7 +45,7 @@ export const deleteItemSchema = {
   }),
 };
 
-export const postAddOptionSchema = {
+export const postOptionSchema = {
   body: Joi.object({
     item_id: Joi.number().integer().required(),
     measurement_id: Joi.number().integer().required(),

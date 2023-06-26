@@ -4,7 +4,7 @@ import {
   deleteItemSchema,
   getItemSchema,
   patchItemSchema,
-  postAddOptionSchema,
+  postOptionSchema,
   postItemSchema,
   deleteOptionSchema,
 } from './_schemas.js';
@@ -104,9 +104,9 @@ export const deleteItem = async (req, res, next) => {
  * @param {express.Response} res
  * @param {express.NextFunction} next
  */
-export const postAddOption = async (req, res, next) => {
+export const postOption = async (req, res, next) => {
   try {
-    httpValidator({ body: req.body }, postAddOptionSchema)();
+    httpValidator({ body: req.body }, postOptionSchema)();
 
     const result = await addOption(req.body);
 
