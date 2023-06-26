@@ -5,6 +5,7 @@ import { showUser } from './show-user.js';
 /**
  * @param {express.Request} req
  * @param {express.Response} res
+ * @param {express.NextFunction} next
  */
 export const getUsers = async (req, res, next) => {
   try {
@@ -19,6 +20,7 @@ export const getUsers = async (req, res, next) => {
 /**
  * @param {express.Request} req
  * @param {express.Response} res
+ * @param {express.NextFunction} next
  */
 export const getUser = async (req, res, next) => {
   try {
