@@ -2,6 +2,7 @@ import express from 'express';
 import { listUsers } from './list-users.js';
 import { showUser } from './show-user.js';
 import { editUser } from './edit-user.js';
+import { removeUser } from './remove-user.js';
 
 /**
  * @param {express.Request} req
@@ -41,6 +42,21 @@ export const getUser = async (req, res, next) => {
 export const patchUser = async (req, res, next) => {
   try {
     const result = await editUser({ id: req.params.id, ...req.body });
+
+    res.status(200).json(result);
+  } catch (error) {
+    next(error);
+  }
+};
+
+/**
+ * @param {express.Request} req
+ * @param {express.Response} res
+ * @param {express.NextFunction} next
+ */
+export const deleteUser = async (req, res, next) => {
+  try {
+    const result = await removeUser({ id: req.params.id });
 
     res.status(200).json(result);
   } catch (error) {
