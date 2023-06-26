@@ -1,5 +1,5 @@
 import express from 'express';
-import usersRoute from './users/api.js';
+import usersRoute from './users/_api.js';
 
 const rootRouter = express.Router();
 

@@ -6,7 +6,7 @@ import {
   patchUserSchema,
   postLoginUserSchema,
   postUserSchema,
-} from './schemas.js';
+} from './_schemas.js';
 import { addUser } from './add-user.js';
 import { listUsers } from './list-users.js';
 import { showUser } from './show-user.js';
