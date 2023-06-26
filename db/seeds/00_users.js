@@ -33,3 +33,4 @@ export const seed = async function (knex) {
     },
   ]);
 };
+
