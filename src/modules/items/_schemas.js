@@ -44,3 +44,12 @@ export const deleteItemSchema = {
     id: Joi.number().integer().required(),
   }),
 };
+
+export const postAddOptionSchema = {
+  body: Joi.object({
+    item_id: Joi.number().integer().required(),
+    measurement_id: Joi.number().integer().required(),
+    unit: Joi.number().required().positive(),
+    price: Joi.number().positive(),
+  }),
+};

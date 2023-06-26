@@ -1,11 +1,18 @@
 import express from 'express';
 import httpValidator from '../../shared/http-validator/index.js';
-import { deleteItemSchema, getItemSchema, patchItemSchema, postItemSchema } from './_schemas.js';
+import {
+  deleteItemSchema,
+  getItemSchema,
+  patchItemSchema,
+  postAddOptionSchema,
+  postItemSchema,
+} from './_schemas.js';
 import { addItem } from './add-item.js';
 import { listItems } from './list-items.js';
 import { showItem } from './show-item.js';
 import { editItem } from './edit-item.js';
 import { removeItem } from './remove-item.js';
+import { addOption } from './add-option.js';
 
 /**
  * @param {express.Request} req
@@ -83,6 +90,23 @@ export const deleteItem = async (req, res, next) => {
     httpValidator({ params: req.params }, deleteItemSchema)();
 
     const result = await removeItem({ id: req.params.id });
+
+    res.status(200).json(result);
+  } catch (error) {
+    next(error);
+  }
+};
+
+/**
+ * @param {express.Request} req
+ * @param {express.Response} res
+ * @param {express.NextFunction} next
+ */
+export const postAddOption = async (req, res, next) => {
+  try {
+    httpValidator({ body: req.body }, postAddOptionSchema)();
+
+    const result = await addOption(req.body);
 
     res.status(200).json(result);
   } catch (error) {
