@@ -14,7 +14,7 @@ import { addUser } from './add-user.js';
  */
 export const postUser = async (req, res, next) => {
   try {
-    httpValidator({ body: req.body }, postUserSchema);
+    httpValidator({ body: req.body }, postUserSchema)();
 
     const result = await addUser(req.body);
 

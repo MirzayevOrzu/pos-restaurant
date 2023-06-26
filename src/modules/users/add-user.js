@@ -2,9 +2,9 @@ import db from '../../db/index.js';
 import bcrypt from 'bcryptjs';
 
 export const addUser = async (data) => {
-  data.password = await bcrypt.hash(data.password);
+  data.password = await bcrypt.hash(data.password, 10);
 
-  const result = await db('users').insert(data);
+  await db('users').insert(data);
 
-  return result;
+  return true;
 };
