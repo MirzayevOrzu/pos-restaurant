@@ -12,6 +12,7 @@ export const up = function (knex) {
     table.string('photo');
     table.boolean('in_menu').defaultTo(false);
     table.boolean('is_deleted').defaultTo(false);
+    table.timestamps(true, true);
   });
 };
 

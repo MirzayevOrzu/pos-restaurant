@@ -7,6 +7,16 @@ export const postItemSchema = {
     category_id: Joi.number().integer().required(),
     type: Joi.string().valid('food', 'good').required(),
     in_menu: Joi.bool(),
+    options: Joi.array()
+      .items(
+        Joi.object({
+          measurement_id: Joi.number().integer().required(),
+          unit: Joi.number().required().positive(),
+          price: Joi.number().positive(),
+        })
+      )
+      .min(1)
+      .required(),
   }),
 };
 
