@@ -2,9 +2,9 @@ import db from '../../db/index.js';
 import { NotFoundError } from '../../shared/errors/index.js';
 
 export const removeItem = async ({ id }) => {
-  const category = await db('items').where({ id }).first();
+  const item = await db('items').where({ id }).first();
 
-  if (!category) {
+  if (!item) {
     throw new NotFoundError('Tovar topilmadi.');
   }
 
