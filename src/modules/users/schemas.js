@@ -32,3 +32,10 @@ export const deleteUserSchema = {
     id: Joi.number().integer().required(),
   }),
 };
+
+export const postLoginUserSchema = {
+  body: Joi.object({
+    username: Joi.string().trim().min(3).required(),
+    password: Joi.string().min(3).required(),
+  }),
+};
