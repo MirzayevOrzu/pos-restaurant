@@ -1,5 +1,14 @@
 import Joi from 'joi';
 
+export const postUserSchema = {
+  body: Joi.object({
+    first_name: Joi.string().trim().min(1).required(),
+    last_name: Joi.string().trim().min(1).required(),
+    username: Joi.string().trim().min(3).required(),
+    password: Joi.string().min(3).required(),
+  }),
+};
+
 export const getUserSchema = {
   params: Joi.object({
     id: Joi.number().integer().required(),

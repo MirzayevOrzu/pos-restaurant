@@ -4,7 +4,25 @@ import { showUser } from './show-user.js';
 import { editUser } from './edit-user.js';
 import { removeUser } from './remove-user.js';
 import httpValidator from '../../shared/http-validator/index.js';
-import { deleteUserSchema, getUserSchema, patchUserSchema } from './schemas.js';
+import { deleteUserSchema, getUserSchema, patchUserSchema, postUserSchema } from './schemas.js';
+import { addUser } from './add-user.js';
+
+/**
+ * @param {express.Request} req
+ * @param {express.Response} res
+ * @param {express.NextFunction} next
+ */
+export const postUser = async (req, res, next) => {
+  try {
+    httpValidator({ body: req.body }, postUserSchema);
+
+    const result = await addUser(req.body);
+
+    res.status(200).json(result);
+  } catch (error) {
+    next(error);
+  }
+};
 
 /**
  * @param {express.Request} req
