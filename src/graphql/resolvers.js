@@ -5,6 +5,7 @@ import { showItem } from '../modules/items/show-item.js';
 import { listMeasurements } from '../modules/measurements/list-measurements.js';
 import { showMeasurement } from '../modules/measurements/show-measurement.js';
 import { listOptions } from '../modules/options/list-options.js';
+import { editUser } from '../modules/users/edit-user.js';
 import { listUsers } from '../modules/users/list-users.js';
 import { showUser } from '../modules/users/show-user.js';
 
@@ -33,6 +34,11 @@ export default {
     },
     item: (_, args) => {
       return showItem({ id: args.id });
+    },
+  },
+  Mutation: {
+    updateUser: (_, args) => {
+      return editUser({ id: args.id, ...args.input });
     },
   },
   Item: {

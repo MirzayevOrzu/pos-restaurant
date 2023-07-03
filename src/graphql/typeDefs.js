@@ -13,6 +13,10 @@ export default `#graphql
     items: [Item!]!
   }
 
+  type Mutation {
+    updateUser(id: ID! input: UpdateUserInput!): User!
+  }
+
   type User {
     id: ID!
     first_name: String
@@ -20,6 +24,12 @@ export default `#graphql
     username: String
     created_at: String
     updated_at: String
+  }
+
+  input UpdateUserInput {
+    first_name: String
+    last_name: String
+    username: String
   }
 
   type Category {
