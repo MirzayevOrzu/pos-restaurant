@@ -19,11 +19,7 @@ export const listItems = async () => {
       `)
     );
 
-  const count = await dbQuery.clone().count().groupBy('items.id');
   const items = await dbQuery.groupBy('items.id');
 
-  return {
-    count: count.length,
-    list: items,
-  };
+  return items;
 };
