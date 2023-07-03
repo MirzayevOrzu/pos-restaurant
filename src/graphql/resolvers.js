@@ -34,4 +34,9 @@ export default {
       return showItem({ id: args.id });
     },
   },
+  Item: {
+    category: (parent) => {
+      return showCategory({ id: parent.category_id });
+    },
+  },
 };
