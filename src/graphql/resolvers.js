@@ -4,6 +4,7 @@ import { listItems } from '../modules/items/list-items.js';
 import { showItem } from '../modules/items/show-item.js';
 import { listMeasurements } from '../modules/measurements/list-measurements.js';
 import { showMeasurement } from '../modules/measurements/show-measurement.js';
+import { listOptions } from '../modules/options/list-options.js';
 import { listUsers } from '../modules/users/list-users.js';
 import { showUser } from '../modules/users/show-user.js';
 
@@ -37,6 +38,17 @@ export default {
   Item: {
     category: (parent) => {
       return showCategory({ id: parent.category_id });
+    },
+    options: (parent) => {
+      return listOptions({ item_id: parent.id });
+    },
+  },
+  Option: {
+    measurement: (parent) => {
+      return showMeasurement({ id: parent.measurement_id });
+    },
+    item: (parent) => {
+      return showItem({ id: parent.item_id });
     },
   },
 };

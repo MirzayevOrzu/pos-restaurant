@@ -42,9 +42,20 @@ export default `#graphql
     name: String
     description: String
     category: Category
+    options: [Option!]!
     type: String
     photo: String
     in_menu: Boolean
+    created_at: String
+    updated_at: String
+  }
+
+  type Option {
+    id: ID!
+    item: Item!
+    measurement: Measurement
+    unit: Float
+    price: Float
     created_at: String
     updated_at: String
   }
