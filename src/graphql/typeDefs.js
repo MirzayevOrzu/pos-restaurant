@@ -5,6 +5,9 @@ export default `#graphql
 
     category(id: ID!): Category!
     categories: [Category!]!
+
+    measurement(id: ID!): Measurement!
+    measurements: [Measurement!]!
   }
 
   type User {
@@ -19,6 +22,14 @@ export default `#graphql
   type Category {
     id: ID!
     name: String
+    created_at: String
+    updated_at: String
+  }
+
+  type Measurement {
+    id: ID!
+    name: String
+    inc_by: Float
     created_at: String
     updated_at: String
   }
