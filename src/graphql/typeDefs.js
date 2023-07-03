@@ -15,6 +15,7 @@ export default `#graphql
 
   type Mutation {
     updateUser(id: ID! input: UpdateUserInput!): User!
+    removeUser(id: ID!): User!
   }
 
   type User {

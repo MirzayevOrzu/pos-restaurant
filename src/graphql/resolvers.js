@@ -7,6 +7,7 @@ import { showMeasurement } from '../modules/measurements/show-measurement.js';
 import { listOptions } from '../modules/options/list-options.js';
 import { editUser } from '../modules/users/edit-user.js';
 import { listUsers } from '../modules/users/list-users.js';
+import { removeUser } from '../modules/users/remove-user.js';
 import { showUser } from '../modules/users/show-user.js';
 
 export default {
@@ -39,6 +40,9 @@ export default {
   Mutation: {
     updateUser: (_, args) => {
       return editUser({ id: args.id, ...args.input });
+    },
+    removeUser: (_, args) => {
+      return removeUser({ id: args.id });
     },
   },
   Item: {
