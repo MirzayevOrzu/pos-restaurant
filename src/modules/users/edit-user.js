@@ -15,7 +15,8 @@ export const editUser = async ({ id, ...changes }) => {
 
   const result = await db('users')
     .where({ id })
-    .update({ ...changes });
+    .update({ ...changes })
+    .returning('*');
 
-  return result;
+  return result[0];
 };
