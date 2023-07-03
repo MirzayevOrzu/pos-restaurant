@@ -8,6 +8,9 @@ export default `#graphql
 
     measurement(id: ID!): Measurement!
     measurements: [Measurement!]!
+
+    item(id: ID!): Item!
+    items: [Item!]!
   }
 
   type User {
@@ -30,6 +33,18 @@ export default `#graphql
     id: ID!
     name: String
     inc_by: Float
+    created_at: String
+    updated_at: String
+  }
+
+  type Item {
+    id: ID!
+    name: String
+    description: String
+    category: Category
+    type: String
+    photo: String
+    in_menu: Boolean
     created_at: String
     updated_at: String
   }
