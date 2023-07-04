@@ -3,7 +3,10 @@ import { editCategory } from '../modules/categories/edit-category.js';
 import { listCategories } from '../modules/categories/list-categories.js';
 import { removeCategory } from '../modules/categories/remove-category.js';
 import { showCategory } from '../modules/categories/show-category.js';
+import { addItem } from '../modules/items/add-item.js';
+import { editItem } from '../modules/items/edit-item.js';
 import { listItems } from '../modules/items/list-items.js';
+import { removeItem } from '../modules/items/remove-item.js';
 import { showItem } from '../modules/items/show-item.js';
 import { addMeasurement } from '../modules/measurements/add-measurement.js';
 import { editMeasurement } from '../modules/measurements/edit-measurement.js';
@@ -71,6 +74,15 @@ export default {
     },
     removeMeasurement: (_, args) => {
       return removeMeasurement({ id: args.id });
+    },
+    createItem: (_, args) => {
+      return addItem({ ...args.input });
+    },
+    updateItem: (_, args) => {
+      return editItem({ id: args.id, ...args.input });
+    },
+    removeItem: (_, args) => {
+      return removeItem({ id: args.id });
     },
   },
   Item: {

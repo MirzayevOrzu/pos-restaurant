@@ -25,6 +25,10 @@ export default `#graphql
     createMeasurement(input: CreateMeasurementInput!): Measurement!
     updateMeasurement(id: ID!, input: UpdateMeasurementInput!): Measurement!
     removeMeasurement(id: ID!): Measurement!
+
+    createItem(input: CreateItemInput!): Item!
+    updateItem(id: ID!, input: UpdateItemInput!): Item!
+    removeItem(id: ID!): Item!
   }
 
   type User {
@@ -95,6 +99,23 @@ export default `#graphql
     updated_at: String
   }
 
+  type CreateItemInput {
+    name: String!
+    description: String!
+    category_id: String!
+    type: String!
+    in_menu: Boolean!
+    options: [OptionInput!]!
+  }
+
+  type UpdateItemInput {
+    name: String
+    description: String
+    category_id: String
+    type: String
+    in_menu: Boolean
+  }
+
   type Option {
     id: ID!
     item: Item!
@@ -103,5 +124,11 @@ export default `#graphql
     price: Float
     created_at: String
     updated_at: String
+  }
+
+  type OptionInput {
+    measurement_id: String
+    unit: Float!
+    price: Float!
   }
 `;

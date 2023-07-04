@@ -8,7 +8,7 @@ export const removeItem = async ({ id }) => {
     throw new NotFoundError('Tovar topilmadi.');
   }
 
-  const result = await db('items').where({ id }).update({ is_deleted: true });
+  const result = await db('items').where({ id }).update({ is_deleted: true }).returning('*');
 
-  return result;
+  return result[0];
 };

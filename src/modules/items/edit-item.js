@@ -10,7 +10,8 @@ export const editItem = async ({ id, ...changes }) => {
 
   const result = await db('items')
     .where({ id })
-    .update({ ...changes });
+    .update({ ...changes })
+    .returning('*');
 
-  return result;
+  return result[0];
 };
