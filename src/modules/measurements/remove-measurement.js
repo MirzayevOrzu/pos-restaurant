@@ -8,7 +8,7 @@ export const removeMeasurement = async ({ id }) => {
     throw new NotFoundError("O'lchov topilmadi.");
   }
 
-  const result = await db('measurements').where({ id }).update({ is_deleted: true });
+  const result = await db('measurements').where({ id }).update({ is_deleted: true }).returning('*');
 
-  return result;
+  return result[0];
 };

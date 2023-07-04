@@ -5,7 +5,10 @@ import { removeCategory } from '../modules/categories/remove-category.js';
 import { showCategory } from '../modules/categories/show-category.js';
 import { listItems } from '../modules/items/list-items.js';
 import { showItem } from '../modules/items/show-item.js';
+import { addMeasurement } from '../modules/measurements/add-measurement.js';
+import { editMeasurement } from '../modules/measurements/edit-measurement.js';
 import { listMeasurements } from '../modules/measurements/list-measurements.js';
+import { removeMeasurement } from '../modules/measurements/remove-measurement.js';
 import { showMeasurement } from '../modules/measurements/show-measurement.js';
 import { listOptions } from '../modules/options/list-options.js';
 import { addUser } from '../modules/users/add-user.js';
@@ -59,6 +62,15 @@ export default {
     },
     removeCategory: (_, args) => {
       return removeCategory({ id: args.id });
+    },
+    createMeasurement: (_, args) => {
+      return addMeasurement({ ...args.input });
+    },
+    updateMeasurement: (_, args) => {
+      return editMeasurement({ id: args.id, ...args.input });
+    },
+    removeMeasurement: (_, args) => {
+      return removeMeasurement({ id: args.id });
     },
   },
   Item: {

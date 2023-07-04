@@ -21,6 +21,10 @@ export default `#graphql
     createCategory(input: CreateCategoryInput!): Category!
     updateCategory(id: ID!, input: UpdateCategoryInput!): Category!
     removeCategory(id: ID!): Category!
+
+    createMeasurement(input: CreateMeasurementInput!): Measurement!
+    updateMeasurement(id: ID!, input: UpdateMeasurementInput!): Measurement!
+    removeMeasurement(id: ID!): Measurement!
   }
 
   type User {
@@ -66,6 +70,16 @@ export default `#graphql
     inc_by: Float
     created_at: String
     updated_at: String
+  }
+
+  type CreateMeasurementInput {
+    name: String!
+    inc_by: Float!
+  }
+
+  type UpdateMeasurementInput {
+    name: String
+    inc_by: Float
   }
 
   type Item {

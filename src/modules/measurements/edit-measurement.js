@@ -10,7 +10,8 @@ export const editMeasurement = async ({ id, ...changes }) => {
 
   const result = await db('measurements')
     .where({ id })
-    .update({ ...changes });
+    .update({ ...changes })
+    .returning('*');
 
-  return result;
+  return result[0];
 };
