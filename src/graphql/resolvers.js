@@ -1,4 +1,7 @@
+import { addCategory } from '../modules/categories/add-category.js';
+import { editCategory } from '../modules/categories/edit-category.js';
 import { listCategories } from '../modules/categories/list-categories.js';
+import { removeCategory } from '../modules/categories/remove-category.js';
 import { showCategory } from '../modules/categories/show-category.js';
 import { listItems } from '../modules/items/list-items.js';
 import { showItem } from '../modules/items/show-item.js';
@@ -47,6 +50,15 @@ export default {
     },
     removeUser: (_, args) => {
       return removeUser({ id: args.id });
+    },
+    createCategory: (_, args) => {
+      return addCategory({ ...args.input });
+    },
+    updateCategory: (_, args) => {
+      return editCategory({ id: args.id, ...args.input });
+    },
+    removeCategory: (_, args) => {
+      return removeCategory({ id: args.id });
     },
   },
   Item: {

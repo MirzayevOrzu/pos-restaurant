@@ -10,7 +10,8 @@ export const editCategory = async ({ id, ...changes }) => {
 
   const result = await db('categories')
     .where({ id })
-    .update({ ...changes });
+    .update({ ...changes })
+    .returning('*');
 
-  return result;
+  return result[0];
 };

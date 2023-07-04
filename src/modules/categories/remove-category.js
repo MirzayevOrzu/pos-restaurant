@@ -8,7 +8,7 @@ export const removeCategory = async ({ id }) => {
     throw new NotFoundError('Turkum topilmadi.');
   }
 
-  const result = await db('categories').where({ id }).update({ is_deleted: true });
+  const result = await db('categories').where({ id }).update({ is_deleted: true }).returning('*');
 
-  return result;
+  return result[0];
 };
