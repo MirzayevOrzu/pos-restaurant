@@ -14,6 +14,7 @@ export default `#graphql
   }
 
   type Mutation {
+    createUser(input: CreateUserInput!): User!
     updateUser(id: ID! input: UpdateUserInput!): User!
     removeUser(id: ID!): User!
   }
@@ -25,6 +26,13 @@ export default `#graphql
     username: String
     created_at: String
     updated_at: String
+  }
+
+  input CreateUserInput {
+    first_name: String!
+    last_name: String!
+    username: String!
+    password: String!
   }
 
   input UpdateUserInput {
