@@ -29,6 +29,8 @@ export default `#graphql
     createItem(input: CreateItemInput!): Item!
     updateItem(id: ID!, input: UpdateItemInput!): Item!
     removeItem(id: ID!): Item!
+    createItemOption(input: CreateOptionInput!): Item!
+    removeItemOption(id: ID!): Item!
   }
 
   type User {
@@ -127,7 +129,14 @@ export default `#graphql
   }
 
   type OptionInput {
-    measurement_id: String
+    measurement_id: String!
+    unit: Float!
+    price: Float!
+  }
+
+  type CreateOptionInput {
+    item_id: String!
+    measurement_id: String!
     unit: Float!
     price: Float!
   }

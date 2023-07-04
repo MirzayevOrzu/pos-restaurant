@@ -8,7 +8,7 @@ export const removeOption = async ({ id }) => {
     throw new NotFoundError('Variant topilmadi.');
   }
 
-  const result = await db('item_options').where({ id }).update({ is_deleted: true });
+  await db('item_options').where({ id }).update({ is_deleted: true });
 
-  return result;
+  return db('items').where({ id: option.item_id }).first();
 };

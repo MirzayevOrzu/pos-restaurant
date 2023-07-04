@@ -19,6 +19,8 @@ import { editUser } from '../modules/users/edit-user.js';
 import { listUsers } from '../modules/users/list-users.js';
 import { removeUser } from '../modules/users/remove-user.js';
 import { showUser } from '../modules/users/show-user.js';
+import { addOption } from '../modules/items/add-option.js';
+import { removeOption } from '../modules/items/remove-option.js';
 
 export default {
   Query: {
@@ -83,6 +85,12 @@ export default {
     },
     removeItem: (_, args) => {
       return removeItem({ id: args.id });
+    },
+    createItemOption: (_, args) => {
+      return addOption({ ...args.input });
+    },
+    removeItemOption: (_, args) => {
+      return removeOption({ id: args.id });
     },
   },
   Item: {
