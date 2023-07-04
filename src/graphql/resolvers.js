@@ -13,7 +13,7 @@ import { editMeasurement } from '../modules/measurements/edit-measurement.js';
 import { listMeasurements } from '../modules/measurements/list-measurements.js';
 import { removeMeasurement } from '../modules/measurements/remove-measurement.js';
 import { showMeasurement } from '../modules/measurements/show-measurement.js';
-import { listOptions } from '../modules/options/list-options.js';
+import { listOptions } from '../modules/items/list-options.js';
 import { addUser } from '../modules/users/add-user.js';
 import { editUser } from '../modules/users/edit-user.js';
 import { listUsers } from '../modules/users/list-users.js';
