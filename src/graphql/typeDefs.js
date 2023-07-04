@@ -62,11 +62,11 @@ export default `#graphql
     updated_at: String
   }
 
-  type CreateCategoryInput {
+  input CreateCategoryInput {
     name: String!
   }
 
-  type UpdateCategoryInput {
+  input UpdateCategoryInput {
     name: String
   }
 
@@ -78,12 +78,12 @@ export default `#graphql
     updated_at: String
   }
 
-  type CreateMeasurementInput {
+  input CreateMeasurementInput {
     name: String!
     inc_by: Float!
   }
 
-  type UpdateMeasurementInput {
+  input UpdateMeasurementInput {
     name: String
     inc_by: Float
   }
@@ -101,7 +101,7 @@ export default `#graphql
     updated_at: String
   }
 
-  type CreateItemInput {
+  input CreateItemInput {
     name: String!
     description: String!
     category_id: String!
@@ -110,7 +110,7 @@ export default `#graphql
     options: [OptionInput!]!
   }
 
-  type UpdateItemInput {
+  input UpdateItemInput {
     name: String
     description: String
     category_id: String
@@ -128,13 +128,13 @@ export default `#graphql
     updated_at: String
   }
 
-  type OptionInput {
+  input OptionInput {
     measurement_id: String!
     unit: Float!
     price: Float!
   }
 
-  type CreateOptionInput {
+  input CreateOptionInput {
     item_id: String!
     measurement_id: String!
     unit: Float!
