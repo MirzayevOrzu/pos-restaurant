@@ -1,3 +1,4 @@
+import { PubSub } from 'graphql-subscriptions';
 import { addCategory } from '../modules/categories/add-category.js';
 import { editCategory } from '../modules/categories/edit-category.js';
 import { listCategories } from '../modules/categories/list-categories.js';
@@ -21,6 +22,8 @@ import { removeUser } from '../modules/users/remove-user.js';
 import { showUser } from '../modules/users/show-user.js';
 import { addOption } from '../modules/items/add-option.js';
 import { removeOption } from '../modules/items/remove-option.js';
+
+const pubsub = new PubSub();
 
 export default {
   Query: {
@@ -50,8 +53,12 @@ export default {
     },
   },
   Mutation: {
-    createUser: (_, args) => {
-      return addUser({ ...args.input });
+    createUser: async (_, args) => {
+      const result = await addUser({ ...args.input });
+
+      pubsub.publish('USER_CREATED', { userCreated: result });
+
+      return result;
     },
     updateUser: (_, args) => {
       return editUser({ id: args.id, ...args.input });
@@ -91,6 +98,11 @@ export default {
     },
     removeItemOption: (_, args) => {
       return removeOption({ id: args.id });
+    },
+  },
+  Subscription: {
+    userCreated: {
+      subscribe: () => pubsub.asyncIterator(['USER_CREATED']),
     },
   },
   Item: {

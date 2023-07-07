@@ -35,6 +35,10 @@ export default gql`
     removeItemOption(id: ID!): Item!
   }
 
+  type Subscription {
+    userCreated: User!
+  }
+
   type User {
     id: ID!
     first_name: String

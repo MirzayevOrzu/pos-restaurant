@@ -17,7 +17,18 @@ const httpServer = http.createServer(app);
 const schema = makeExecutableSchema({ typeDefs, resolvers });
 
 const wsServer = new WebSocketServer({ server: httpServer, path: '/graphql' });
-const serverCleanup = useServer({ schema }, wsServer);
+const serverCleanup = useServer(
+  {
+    schema,
+    onConnect: async (ctx) => {
+      console.log('WS connected');
+    },
+    onDisconnect: (ctx, code, reason) => {
+      console.log('Disconnected');
+    },
+  },
+  wsServer
+);
 
 const server = new ApolloServer({
   schema,
