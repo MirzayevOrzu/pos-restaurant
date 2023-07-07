@@ -1,0 +1,28 @@
+type Query {
+  measurement(id: ID!): Measurement!
+  measurements: [Measurement!]!
+}
+
+type Mutation {
+  createMeasurement(input: CreateMeasurementInput!): Measurement!
+  updateMeasurement(id: ID!, input: UpdateMeasurementInput!): Measurement!
+  removeMeasurement(id: ID!): Measurement!
+}
+
+type Measurement {
+  id: ID!
+  name: String
+  inc_by: Float
+  created_at: String
+  updated_at: String
+}
+
+input CreateMeasurementInput {
+  name: String!
+  inc_by: Float!
+}
+
+input UpdateMeasurementInput {
+  name: String
+  inc_by: Float
+}
