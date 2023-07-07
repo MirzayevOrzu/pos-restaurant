@@ -1,4 +1,6 @@
-export default `#graphql
+import gql from 'graphql-tag';
+
+export default gql`
   type Query {
     users: [User!]!
     user(id: ID!): User!
@@ -15,7 +17,7 @@ export default `#graphql
 
   type Mutation {
     createUser(input: CreateUserInput!): User!
-    updateUser(id: ID! input: UpdateUserInput!): User!
+    updateUser(id: ID!, input: UpdateUserInput!): User!
     removeUser(id: ID!): User!
 
     createCategory(input: CreateCategoryInput!): Category!
