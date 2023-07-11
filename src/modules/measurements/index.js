@@ -1,6 +1,7 @@
 import { readFileSync } from 'fs';
 import { join } from 'path';
 import { __dirname } from '../../shared/commonjs/index.js';
+import { isLoggedIn } from '../../graphql/is-loggedin.js';
 import { listMeasurements } from './list-measurements.js';
 import { showMeasurement } from './show-measurement.js';
 import { addMeasurement } from './add-measurement.js';
@@ -17,13 +18,16 @@ const resolvers = {
     },
   },
   Mutation: {
-    createMeasurement: (_, args) => {
+    createMeasurement: (_, args, contextValue) => {
+      isLoggedIn(contextValue);
       return addMeasurement({ ...args.input });
     },
-    updateMeasurement: (_, args) => {
+    updateMeasurement: (_, args, contextValue) => {
+      isLoggedIn(contextValue);
       return editMeasurement({ id: args.id, ...args.input });
     },
-    removeMeasurement: (_, args) => {
+    removeMeasurement: (_, args, contextValue) => {
+      isLoggedIn(contextValue);
       return removeMeasurement({ id: args.id });
     },
   },

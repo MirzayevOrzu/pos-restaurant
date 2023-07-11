@@ -1,6 +1,7 @@
 import { readFileSync } from 'fs';
 import { join } from 'path';
 import { __dirname } from '../../shared/commonjs/index.js';
+import { isLoggedIn } from '../../graphql/is-loggedin.js';
 import { listCategories } from './list-categories.js';
 import { showCategory } from './show-category.js';
 import { addCategory } from './add-category.js';
@@ -17,13 +18,16 @@ const resolvers = {
     },
   },
   Mutation: {
-    createCategory: (_, args) => {
+    createCategory: (_, args, contextValue) => {
+      isLoggedIn(contextValue);
       return addCategory({ ...args.input });
     },
-    updateCategory: (_, args) => {
+    updateCategory: (_, args, contextValue) => {
+      isLoggedIn(contextValue);
       return editCategory({ id: args.id, ...args.input });
     },
-    removeCategory: (_, args) => {
+    removeCategory: (_, args, contextValue) => {
+      isLoggedIn(contextValue);
       return removeCategory({ id: args.id });
     },
   },

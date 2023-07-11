@@ -1,6 +1,7 @@
 import { readFileSync } from 'fs';
 import { join } from 'path';
 import { __dirname } from '../../shared/commonjs/index.js';
+import { isLoggedIn } from '../../graphql/is-loggedin.js';
 import { listItems } from './list-items.js';
 import { showItem } from './show-item.js';
 import { addItem } from './add-item.js';
@@ -22,19 +23,24 @@ const resolvers = {
     },
   },
   Mutation: {
-    createItem: (_, args) => {
+    createItem: (_, args, contextValue) => {
+      isLoggedIn(contextValue);
       return addItem({ ...args.input });
     },
-    updateItem: (_, args) => {
+    updateItem: (_, args, contextValue) => {
+      isLoggedIn(contextValue);
       return editItem({ id: args.id, ...args.input });
     },
-    removeItem: (_, args) => {
+    removeItem: (_, args, contextValue) => {
+      isLoggedIn(contextValue);
       return removeItem({ id: args.id });
     },
-    createItemOption: (_, args) => {
+    createItemOption: (_, args, contextValue) => {
+      isLoggedIn(contextValue);
       return addOption({ ...args.input });
     },
-    removeItemOption: (_, args) => {
+    removeItemOption: (_, args, contextValue) => {
+      isLoggedIn(contextValue);
       return removeOption({ id: args.id });
     },
   },
