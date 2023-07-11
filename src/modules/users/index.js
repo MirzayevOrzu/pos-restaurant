@@ -7,6 +7,7 @@ import { showUser } from './show-user.js';
 import { addUser } from './add-user.js';
 import { editUser } from './edit-user.js';
 import { removeUser } from './remove-user.js';
+import { loginUser } from './login-user.js';
 
 const resolvers = {
   Query: {
@@ -30,6 +31,9 @@ const resolvers = {
     },
     removeUser: (_, args) => {
       return removeUser({ id: args.id });
+    },
+    login: (_, args) => {
+      return loginUser(args.input);
     },
   },
   Subscription: {
