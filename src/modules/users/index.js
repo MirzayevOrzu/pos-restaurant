@@ -36,8 +36,7 @@ const resolvers = {
       isLoggedIn(contextValue);
       return removeUser({ id: args.id });
     },
-    login: (_, args, contextValue) => {
-      isLoggedIn(contextValue);
+    login: (_, args) => {
       return loginUser(args.input);
     },
   },
