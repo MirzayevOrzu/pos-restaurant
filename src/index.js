@@ -5,6 +5,7 @@ import config from './shared/config/index.js';
 import configureGraphQLServer from './graphql/index.js';
 
 const app = express();
+app.use(cors());
 const httpServer = http.createServer(app);
 
 const { server, gqlServerMiddleware } = configureGraphQLServer(httpServer);
