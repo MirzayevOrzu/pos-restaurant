@@ -1,0 +1,9 @@
+type Query {
+  search(contains: String): [SearchResult!]
+}
+union SearchResult = User | Category | Item | Measurement
+
+enum ItemType {
+  FOOD
+  GOOD
+}

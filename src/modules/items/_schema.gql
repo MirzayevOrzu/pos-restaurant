@@ -17,7 +17,7 @@ type Item {
   description: String
   category: Category
   options: [Option!]!
-  type: String
+  type: ItemType
   photo: String
   in_menu: Boolean
   created_at: String

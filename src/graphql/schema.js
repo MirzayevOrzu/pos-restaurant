@@ -1,4 +1,5 @@
 import { makeExecutableSchema } from '@graphql-tools/schema';
+import commonModule from '../modules/common/index.js';
 
 // Modules
 import usersModule from '../modules/users/index.js';
@@ -12,6 +13,7 @@ export const schema = makeExecutableSchema({
     usersModule.typeDefs,
     measurementsModule.typeDefs,
     categoriesModule.typeDefs,
+    commonModule.typeDefs,
     itemsModule.typeDefs,
     uploadsModule.typeDefs,
   ],
@@ -19,6 +21,7 @@ export const schema = makeExecutableSchema({
     usersModule.resolvers,
     measurementsModule.resolvers,
     categoriesModule.resolvers,
+    commonModule.resolvers,
     itemsModule.resolvers,
     uploadsModule.resolvers,
   ],
