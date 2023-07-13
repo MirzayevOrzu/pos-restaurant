@@ -21,6 +21,7 @@
     "graphql": "^16.7.1",
     "graphql-subscriptions": "^2.0.0",
     "graphql-tag": "^2.12.6",
+    "graphql-upload": "^16.0.2",
     "graphql-ws": "^5.14.0",
     "joi": "^17.9.2",
     "jsonwebtoken": "^9.0.0",

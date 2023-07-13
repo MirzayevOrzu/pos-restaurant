@@ -6,12 +6,11 @@ import configureGraphQLServer from './graphql/index.js';
 
 const app = express();
 app.use(cors());
+app.use(express.json());
 const httpServer = http.createServer(app);
 
-const { server, gqlServerMiddleware } = configureGraphQLServer(httpServer);
-await server.start();
-app.use('/graphql', cors(), express.json(), gqlServerMiddleware());
-
-httpServer.listen({ port: config.port }, () => {
-  console.log(`Server is listening on port ${config.port}`);
+configureGraphQLServer(httpServer, app).then((httpServer) => {
+  httpServer.listen({ port: config.port }, () => {
+    console.log(`Server is listening on port ${config.port}`);
+  });
 });
